@@ -1,0 +1,24 @@
+exif-gps-mapping-nemo
+ 
+A Cinnamon Nemo custom action and related scripts for displaying Exif metadata of media files in Nemo
+and for plotting GPS position thererof using various online mapping services
+
+This project is a derivative work under GNU GPL v2, based upon Nemo, the file manager for Cinnamon:
+https://github.com/linuxmint/nemo .
+
+Author:  Sergey Ushakov  : https://github.com/s-n-ushakov
+Started: 2023-08-21
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Suite 500, Boston, MA  02110-1335  USA

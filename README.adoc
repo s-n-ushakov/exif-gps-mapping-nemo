@@ -1,0 +1,159 @@
+// This document is authored using Asciidoctor:
+// https://asciidoctor.org/
+
+# exif-gps-mapping-nemo
+
+[.lead]
+A Cinnamon Nemo custom action and related scripts for displaying Exif metadata of media files in Nemo and for plotting
+GPS position thereof using various online mapping services
+
+## Background
+
+### Exif, Cinnamon Nemo
+
+https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2023-E[Exif] is a standard, specified{nbsp}/ issued
+by JEIDA{nbsp}/ https://www.jeita.or.jp/english/[JEITA]{nbsp}/ https://www.cipa.jp/e/index.html[CIPA], that specifies
+formats for media files, as well as ancillary metadata tags, to be used by digital cameras{nbsp}/ scanners and sound
+recorders. MPEG video formats also allow containing metadata in media files. This metadata, besides various camera and
+shooting mode information, such as the camera model and make, aperture, shutter speed, focal length, ISO speed, etc.,
+may also contain geolocation information.
+
+https://github.com/linuxmint/nemo[Nemo] is the file manager for the https://github.com/linuxmint/cinnamon[Cinnamon]
+desktop environment, the primary one for https://linuxmint.com/[Linux Mint].
+
+### The problem
+
+Nemo out-of-the box facilities for displaying media file metadata are limited and allow no access to geolocation info.
+
+Command-line utilities exist like https://github.com/libexif/exif[`exif`] and https://exiftool.org/[`exiftool`] that
+allow displaying various media file metadata in a terminal session, GPS position included, but no integration with Nemo
+is immediately available, and no integration with online mapping services is available either.
+
+## The solution
+
+Nemo has a provision for being extended with custom actions and is distributed with a custom action example as
+https://github.com/linuxmint/nemo/blob/master/files/usr/share/nemo/actions/sample.nemo_action[`sample.nemo_action`].
+
+With mentioned `sample.nemo_action` as a prototype, a custom Nemo action and related scripts were developed that allow
+displaying an additional context menu for `image/jpeg` and `video/mp4` media types with further:
+
+- displaying Nemo{nbsp}/ https://gitlab.gnome.org/GNOME/zenity[Zenity] dialog boxes with Exif metadata being displayed
+in their native tabular format available from `exif` and `exiftool` utilities;
+- displaying shooting point locations using various online mapping services like OpenStreetMap, Google Maps, Bing
+Maps, etc. in a browser of choice.
+
+### The solution structure
+
+A release archive contains the following files:
+
+```
+├─ nemo/
+│  └─ actions/
+│     ├─ exif_metadata__functions.bash            : local reusable functions library
+│     ├─ exif_metadata__mapping.bash              : generic script to implement interactions
+│     │                                           :   with online mapping services
+│     ├─ exif_metadata__settings.bash             : the settings file
+│     ├─ exif_metadata_list_exif.bash             : script to display Exif metadata
+│     │                                           :   using 'exif' utility
+│     ├─ exif_metadata_list_exiftool.bash         : script to display Exif metadata
+│     │                                           :   using 'exiftool' utility
+│     ├─ exif_metadata_mapping_2gis.bash          : script to display GPS position in 2GIS
+│     ├─ exif_metadata_mapping_bing.bash          : script to display GPS position in Bing Maps
+│     ├─ exif_metadata_mapping_duckduckgo.bash    : script to display GPS position in DuckDuckGo
+│     ├─ exif_metadata_mapping_google.bash        : script to display GPS position in Google Maps
+│     ├─ exif_metadata_mapping_openstreetmap.bash : script to display GPS position in
+│     │                                           :   OpenStreetMap
+│     ├─ exif_metadata_mapping_vk.bash            : script to display GPS position in VK Maps
+│     ├─ exif_metadata_mapping_yandex.bash        : script to display GPS position in Yandex Maps
+│     ├─ exif_metadata_menu.bash                  : script to display a menu of available actions
+│     └─ exif_metadata_menu.nemo_action           : the Nemo action descriptor 
+├─ deploy-to-local-machine.bash                   : script to deploy the action and scripts
+│                                                 :   to current user profile
+├─ diff-with-local-machine.bash                   : script to compare contents of the
+│                                                 :   'nemo/actions' folder with the one in the
+│                                                 :   current user profile
+├─ COPYING                                        : GPL license text
+├─ NOTICE                                         : GPL notice text
+└─ README.adoc                                    : user manual (this document)
+```
+
+### Usage
+
+- download a release archive and unpack to an arbitrary temporary folder;
+- run the `deploy-to-local-machine.bash` script
+
+With all that successfully in place, a new context menu should become available in Nemo for files that have `image/jpeg`
+or `video/mp4` media types. Menu item title is subject to internationalization, with English title being "Display Exif
+metadata menu". With this menu item having been selected, a popup menu is displayed with a list of actions available
+depending on the context. Possible actions may include:
+
+- Display Exif metadata using 'exiftool' utility
+- Display Exif metadata using 'exif' utility
+- Display GPS position in various online mapping services
+
+The list of online mapping services is extensible, as it is derived automatically from the collection of
+`exif_metadata_mapping_*.bash` scripts found in the `${HOME}/.local/share/nemo/actions` folder.
+
+### Prerequisites
+
+The solution requires at least one of the following utilities to be available:
+
+// a table with:
+// - automatic column width,
+// - 2 columns
+[%autowidth,cols=2]
+|===
+|'exif'
+|a simple Exif data handling utility, limited to `image/jpeg` only
+
+|'exiftool'
+|a well-recognized Exif data handling utility, with extended metadata tag set and with support for variety of media file
+formats
+|===
+
+### Possible customizations
+
+#### Internationalization
+
+The solution currently has the following provisions for internationalization:
+
+* `LANGUAGE` variable defined in `exif_metadata__settings.bash`:
+** overrides{nbsp}/ shadows similar user profile variable;
+** defaults to shortened language-code-only user profile setting as `"${LANGUAGE/_*/}"`;
+** has effect on language settings of the utilities and on online mapping services;
+* main menu item name and comment, specified in `exif_metadata_menu.nemo_action`;
+* popup menu item names for metadata display actions, specified as `descriptions_metadata_exiftool` and
+`descriptions_metadata_exif` variables in `exif_metadata_menu.bash`;
+* popup menu item names for GPS position display actions, specified as custom comments in related
+`exif_metadata_mapping_*.bash` scripts.
+
+#### Browser for displaying GPS position in online mapping services
+
+Browser can be selected using the `BROWSER` variable defined in `exif_metadata__settings.bash` that defaults to default
+system browser wrapper as `xdg-open`.
+
+#### Types of media files handled by the solution
+
+Types of media files handled by the solution are specified using their media types, and their list is currently
+restricted to `image/jpeg` and `video/mp4` by the `Mimetypes` setting in the `exif_metadata_menu.nemo_action` file.
+
+Nothing prevents this list from being extended, provided that related media types are supported by metadata handling
+utilities.
+
+#### Online mapping services for displaying GPS position
+
+Collection of online mapping services for displaying GPS position may be customized by deleting or adding to the
+collection of `exif_metadata_mapping_*.bash` scripts.
+
+Please feel free to add new scripts using existing scripts as samples and contribute :)
+
+#### Alternative{nbsp}/ extra metadata handling utilities
+
+Collection of metadata handling utilities may be extended if necessary. Please consider `exif_metadata_list_exif.bash`
+and `exif_metadata_list_exiftool.bash` scripts as samples for new utility wrappers. Popup menu creation script
+`exif_metadata_menu.bash` will also need an addition inside.
+
+## License
+
+The project, being a derivative work based upon Nemo, inherits its GNU General Public License version 2, with related
+information supplied in `COPYING` and `NOTICE` files.
