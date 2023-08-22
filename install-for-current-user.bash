@@ -1,7 +1,8 @@
 #!/bin/bash
 #=======================================================================================================================
-# Script to compare Nemo files in the project to the ones existing on local machine.
+# Script to copy/install Nemo files in the project to current user profile on local machine.
 #=======================================================================================================================
 
-diff ./nemo/actions/ "${HOME}/.local/share/nemo/actions/" \
-  && echo "$0 : INFO : No differences found."
+cp -a ./nemo/actions/* "${HOME}/.local/share/nemo/actions" \
+  && echo "$0 : INFO : Deployed to current user profile on local machine successfully."
+

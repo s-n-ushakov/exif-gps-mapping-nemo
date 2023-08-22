@@ -67,9 +67,9 @@ A release archive contains the following files:
 │     ├─ exif_metadata_mapping_yandex.bash        : script to display GPS position in Yandex Maps
 │     ├─ exif_metadata_menu.bash                  : script to display a menu of available actions
 │     └─ exif_metadata_menu.nemo_action           : the Nemo action descriptor 
-├─ deploy-to-local-machine.bash                   : script to deploy the action and scripts
+├─ install-for-current-user.bash                  : script to install the action and scripts
 │                                                 :   to current user profile
-├─ diff-with-local-machine.bash                   : script to compare contents of the
+├─ diff-with-current-user.bash                    : script to compare contents of the
 │                                                 :   'nemo/actions' folder with the one in the
 │                                                 :   current user profile
 ├─ COPYING                                        : GPL license text
@@ -80,16 +80,17 @@ A release archive contains the following files:
 ### Usage
 
 - download a release archive and unpack to an arbitrary temporary folder;
-- run the `deploy-to-local-machine.bash` script
+- open the folder that was created upon unpacking the release archive;
+- run the installation script as `./install-for-current-user.bash`.
 
 With all that successfully in place, a new context menu should become available in Nemo for files that have `image/jpeg`
 or `video/mp4` media types. Menu item title is subject to internationalization, with English title being "Display Exif
 metadata menu". With this menu item having been selected, a popup menu is displayed with a list of actions available
 depending on the context. Possible actions may include:
 
-- Display Exif metadata using 'exiftool' utility
-- Display Exif metadata using 'exif' utility
-- Display GPS position in various online mapping services
+- Display Exif metadata using 'exiftool' utility;
+- Display Exif metadata using 'exif' utility;
+- Display GPS position in various online mapping services.
 
 The list of online mapping services is extensible, as it is derived automatically from the collection of
 `exif_metadata_mapping_*.bash` scripts found in the `${HOME}/.local/share/nemo/actions` folder.
