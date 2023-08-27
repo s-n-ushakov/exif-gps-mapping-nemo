@@ -1,10 +1,7 @@
 #! /bin/bash
 #-----------------------------------------------------------------------------------------------------------------------
 # Script to implement rendering of GPS locations from Exif metadata in VK Maps, based on OpenStreetMap data with custom
-# rendering and services.
-#
-# Description for auto configuration [en]: Display GPS position in 'VK Maps'
-# Description for auto configuration [ru]: Показать GPS-позицию в сервисе 'VK Карты'
+# rendering and services, and for evaluation of conditions for related Nemo action to be displayed in the context menu.
 #-----------------------------------------------------------------------------------------------------------------------
 
 # source the script file with reusable function definitions

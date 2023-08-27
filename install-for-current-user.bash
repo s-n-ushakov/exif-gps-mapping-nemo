@@ -3,6 +3,6 @@
 # Script to copy/install Nemo files in the project to current user profile on local machine.
 #=======================================================================================================================
 
-cp -a ./nemo/actions/* "${HOME}/.local/share/nemo/actions" \
+cp --archive --recursive --verbose ./nemo/actions/* "${HOME}/.local/share/nemo/actions" \
   && echo "$0 : INFO : Deployed to current user profile on local machine successfully."
 

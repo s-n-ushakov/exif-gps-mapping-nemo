@@ -1,6 +1,9 @@
 #! /bin/bash
 #-----------------------------------------------------------------------------------------------------------------------
-# Script to implement rendering of Exif metadata in a Zenity/Nemo dialog using 'exiftool' utility.
+# Script to implement rendering of Exif metadata for media files in a Zenity/Nemo dialog using 'exiftool' utility.
+#
+# See 'https://exiftool.org/', 'https://exiftool.sourceforge.net/' and 'https://github.com/exiftool/exiftool'
+# for 'exiftool' utility.
 #-----------------------------------------------------------------------------------------------------------------------
 
 # obtain bulk metadata from `exiftool` utility

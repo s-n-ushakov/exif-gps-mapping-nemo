@@ -12,7 +12,7 @@ BROWSER=xdg-open
 
 # ISO 639-1 code for a language to be used when relevant.
 # Typical options:
-#   LANGUAGE="${LANGUAGE/_*/}"  # use the default system language
+#   LANGUAGE="${LANGUAGE/_*/}"  # use the default system language stripped to language tag only
 #   LANGUAGE=en
 #   LANGUAGE=ru
 LANGUAGE="${LANGUAGE/_*/}"

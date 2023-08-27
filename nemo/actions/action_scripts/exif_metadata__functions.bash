@@ -27,6 +27,8 @@ obtain_gps_position_using_exif () {
     local latitude_degrees=$(echo "scale=6 ; ${latitude_tokens[0]} + ${latitude_tokens[1]} / 60 + ${latitude_tokens[2]//,/.} / 3600" | bc)
     local longitude_degrees=$(echo "scale=6 ; ${longitude_tokens[0]} + ${longitude_tokens[1]} / 60 + ${longitude_tokens[2]//,/.} / 3600" | bc)
     gps_position="${latitude_degrees}${latitude_ref}, ${longitude_degrees}${longitude_ref}"
+  else
+    gps_position=''
   fi
 }
 

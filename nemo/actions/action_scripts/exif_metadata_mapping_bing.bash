@@ -1,9 +1,7 @@
 #! /bin/bash
 #-----------------------------------------------------------------------------------------------------------------------
-# Script to implement rendering of GPS locations from Exif metadata in Bing Maps.
-#
-# Description for auto configuration [en]: Display GPS position in 'Bing Maps'
-# Description for auto configuration [ru]: Показать GPS-позицию в сервисе 'Bing Maps'
+# Script to implement rendering of GPS locations from Exif metadata of media files in Bing Maps
+# and for evaluation of conditions for related Nemo action to be displayed in the context menu.
 #
 # See https://learn.microsoft.com/en-us/bingmaps/articles/create-a-custom-map-url
 # for URL params description.
@@ -40,5 +38,5 @@ format_url () {
   fi
 }
 
-# source/call the generic script for handling GPS locations
+# source/call the generic script for handling GPS locations or for action condition evaluation
 . "$(dirname "$0")/exif_metadata__mapping.bash"

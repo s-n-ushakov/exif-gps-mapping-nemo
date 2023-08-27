@@ -1,9 +1,7 @@
 #! /bin/bash
 #-----------------------------------------------------------------------------------------------------------------------
-# Script to implement rendering of GPS locations from Exif metadata in Google Maps.
-#
-# Description for auto configuration [en]: Display GPS position in 'Google Maps'
-# Description for auto configuration [ru]: Показать GPS-позицию в сервисе 'Google Карты'
+# Script to implement rendering of GPS locations from Exif metadata in Google Maps
+# and for evaluation of conditions for related Nemo action to be displayed in the context menu.
 #-----------------------------------------------------------------------------------------------------------------------
 
 # define specific function for URL formatting, specified in 'exif_metadata__mapping.bash'
