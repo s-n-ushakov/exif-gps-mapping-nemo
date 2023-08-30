@@ -4,8 +4,8 @@
 # exif-gps-mapping-nemo
 
 [.lead]
-Cinnamon Nemo custom actions and related scripts for displaying Exif metadata of media files in Nemo and for plotting
-GPS position thereof using various online mapping services
+A collection of Cinnamon Nemo custom actions and related scripts for displaying Exif metadata of media files in Nemo and
+for plotting GPS position thereof using various online mapping services
 
 ## Background
 
@@ -120,14 +120,17 @@ With all that successfully in place, new context menu items should become availa
 - Display Exif metadata using 'exiftool' utility;
 - Display GPS position in various online mapping services.
 
+.New context menu items
+image::./readme/01-extra-context-menu-items.png[New context menu items,70%]
+
 ### Prerequisites
 
 The solution requires at least one of the following utilities to be available:
 
 // a table with:
 // - automatic column width,
-// - 2 columns
-[%autowidth,cols=2]
+// - 2 columns top-aligned
+[%autowidth,cols=2*.<]
 |===
 |'exif'
 |a simple Exif data handling utility, limited to `image/jpeg` only
