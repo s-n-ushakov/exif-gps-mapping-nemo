@@ -13,7 +13,7 @@ bulk_exif_data=$(exiftool -coordFormat "%.6f" "$1")
 text_to_display="${bulk_exif_data}"
 echo "${text_to_display}" \
   | zenity --text-info \
-           --title="Exif metadata for $1" \
+           --title="Exif metadata for '${1##*/}'" \
            --width=1000 \
            --height=500 \
            --window-icon=exifinfo \

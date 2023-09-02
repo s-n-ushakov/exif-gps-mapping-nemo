@@ -32,7 +32,7 @@ else
 fi
 echo "${text_to_display}" \
   | zenity --text-info \
-           --title="Exif metadata for $1" \
+           --title="Exif metadata for '${1##*/}'" \
            --width=700 \
            --height=500 \
            --window-icon=exifinfo \
