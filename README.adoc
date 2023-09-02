@@ -60,39 +60,19 @@ A release archive contains the following files:
 │     │  │                                               :   using 'exif' utility
 │     │  ├─ exif_metadata_list_exiftool.bash             : script to display Exif metadata
 │     │  │                                               :   using 'exiftool' utility
-│     │  ├─ exif_metadata_mapping_2gis.bash              : script to display GPS position in 2GIS
-│     │  ├─ exif_metadata_mapping_bing.bash              : script to display GPS position in
-│     │  │                                               :   Bing Maps
-│     │  ├─ exif_metadata_mapping_duckduckgo.bash        : script to display GPS position in
-│     │  │                                               :   DuckDuckGo
-│     │  ├─ exif_metadata_mapping_google.bash            : script to display GPS position in
-│     │  │                                               :   Google Maps
-│     │  ├─ exif_metadata_mapping_openstreetmap.bash     : script to display GPS position in
-│     │  │                                               :   OpenStreetMap
-│     │  ├─ exif_metadata_mapping_vk.bash                : script to display GPS position in
-│     │  │                                               :   VK Maps
-│     │  └─ exif_metadata_mapping_yandex.bash            : script to display GPS position in
-│     │                                                  :   Yandex Maps
+│     │  └─ exif_metadata_mapping_*.bash                 : scripts for displaying GPS position in
+│     │                                                  :   various online mapping services
 │     │
 │     │                                                  : Nemo action descriptors ...
 │     ├─ exif_metadata_list_exif.nemo_action             : ... for displaying Exif metadata
 │     │                                                  :   using 'exif' utility
 │     ├─ exif_metadata_list_exiftool.nemo_action         : ... for displaying Exif metadata
 │     │                                                  :   using 'exiftool' utility
-│     ├─ exif_metadata_mapping_2gis.nemo_action          : ... for displaying GPS position in
-│     │                                                  :   2GIS
-│     ├─ exif_metadata_mapping_bing.nemo_action          : ... for displaying GPS position in
-│     │                                                  :   Bing Maps
-│     ├─ exif_metadata_mapping_duckduckgo.nemo_action    : ... for displaying GPS position in
-│     │                                                  :   DuckDuckGo
-│     ├─ exif_metadata_mapping_google.nemo_action        : ... for displaying GPS position in
-│     │                                                  :   Google Maps
-│     ├─ exif_metadata_mapping_openstreetmap.nemo_action : ... for displaying GPS position in
-│     │                                                  :   OpenStreetMap
-│     ├─ exif_metadata_mapping_vk.nemo_action            : ... for displaying GPS position in
-│     │                                                  :   VK Maps
-│     └─ exif_metadata_mapping_yandex.nemo_action        : ... for displaying GPS position in
-│                                                        :   Yandex Maps
+│     └─ exif_metadata_mapping_*.nemo_action             : ... for displaying GPS position in
+│                                                        :   various online mapping services
+│
+├─ readme/
+│  └─ *.png                                              : figures for the user manual
 │
 ├─ install-for-current-user.bash                         : script to install action descriptors
 │                                                        :   and scripts to current user profile
@@ -120,8 +100,13 @@ With all that successfully in place, new context menu items should become availa
 - Display Exif metadata using 'exiftool' utility;
 - Display GPS position in various online mapping services.
 
+#### Screenshots
+
 .New context menu items
 image::./readme/01-extra-context-menu-items.png[New context menu items,70%]
+
+.Popup window with 'exif' utility output
+image::./readme/02-metadata-list-window-exif.png[Popup window with 'exif' utility output,80%]
 
 ### Prerequisites
 
@@ -133,7 +118,7 @@ The solution requires at least one of the following utilities to be available:
 [%autowidth,cols=2*.<]
 |===
 |'exif'
-|a simple Exif data handling utility, limited to `image/jpeg` only
+|a simple Exif data handling utility, limited to `image/jpeg` files only, typically bundled with Linux Mint
 
 |'exiftool'
 |a well-recognized Exif data handling utility, that supports an extended metadata tag set and a variety of media file
