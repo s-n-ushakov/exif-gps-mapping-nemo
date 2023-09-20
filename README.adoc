@@ -14,9 +14,9 @@ for plotting GPS position thereof using various online mapping services
 https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2023-E[Exif] is a standard, specified{nbsp}/ issued
 by JEIDA{nbsp}/ https://www.jeita.or.jp/english/[JEITA]{nbsp}/ https://www.cipa.jp/e/index.html[CIPA], that defines
 formats for media files, as well as ancillary metadata tags, to be used by digital cameras{nbsp}/ scanners and sound
-recorders. MPEG video formats also allow containing metadata in media files. This metadata, besides various camera and
-shooting mode information, such as the camera model and make, aperture, shutter speed, focal length, ISO speed, etc.,
-may also contain geolocation information.
+recorders. MPEG video formats also allow containing metadata in media files. This metadata, besides various technical
+image information, such as camera make and model, aperture, shutter speed, focal length, ISO speed, etc., may also
+contain geolocation information.
 
 https://github.com/linuxmint/nemo[Nemo] is the file manager for the https://github.com/linuxmint/cinnamon[Cinnamon]
 desktop environment, the primary one for https://linuxmint.com/[Linux Mint].
@@ -68,7 +68,7 @@ A release archive contains the following files:
 │     │                                                  :   using 'exif' utility
 │     ├─ exif_metadata_list_exiftool.nemo_action         : ... for displaying Exif metadata
 │     │                                                  :   using 'exiftool' utility
-│     └─ exif_metadata_mapping_*.nemo_action             : ... for displaying GPS position in
+│     └─ exif_metadata_mapping_*.nemo_action             : ... for displaying GPS position using
 │                                                        :   various online mapping services
 │
 ├─ readme/
@@ -85,7 +85,7 @@ A release archive contains the following files:
 ```
 
 The approach with scripts separation from related actions into a nested folder was borrowed from
-https://github.com/smurphos/nemo_actions_and_cinnamon_scripts[smurphos 'Nemo Actions & Cinnamon Scripts' repo].
+https://github.com/smurphos/nemo_actions_and_cinnamon_scripts[GitHub : smurphos : Nemo Actions & Cinnamon Scripts].
 
 ### Usage
 
@@ -134,7 +134,7 @@ The solution currently has the following provisions for internationalization:
 * `LANGUAGE` variable defined in `exif_metadata__settings.bash`:
 ** overrides{nbsp}/ shadows similar user profile variable;
 ** defaults to shortened language-code-only user profile setting as `"${LANGUAGE/_*/}"`;
-** has effect on language settings of the utilities and on online mapping services;
+** has effect on language settings of the utilities and of online mapping services;
 * context menu item names and comment lines for metadata display actions, specified in related action descriptors.
 
 #### Browser for displaying GPS position in online mapping services

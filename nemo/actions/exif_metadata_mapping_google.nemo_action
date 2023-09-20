@@ -19,10 +19,10 @@ Active=true
 
 # The name to show in the menu, locale supported with standard desktop spec.
 Name[en]=Display GPS position in 'Google Maps'
-Name[ru]=Показать GPS-позицию в сервисе '2ГИС'
+Name[ru]=Показать GPS-позицию в сервисе 'Google Карты'
 
 # Tool tip, locale supported (Appears in the status bar)
-Comment[en]=Display GPS position for '%f' in '2GIS' online mapping service
+Comment[en]=Display GPS position for '%f' in 'Google Maps' online mapping service
 Comment[ru]=Показать GPS-позицию для файла '%f' в онлайн-сервисе 'Google Карты'
 
 # What to run.  Enclose in < > to run an executable that resides in the actions folder.

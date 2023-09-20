@@ -1,6 +1,6 @@
 [Nemo Action]
 #-----------------------------------------------------------------------------------------------------------------------
-# A Nemo action file to display GPS location from media file Exif metadata in VK Maps.
+# A Nemo action file to display GPS location from media file Exif metadata in Waze mapping service.
 #
 # See 'https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2023-E' for Exif 3.0 metadata specification.
 #-----------------------------------------------------------------------------------------------------------------------
@@ -18,15 +18,15 @@
 Active=true
 
 # The name to show in the menu, locale supported with standard desktop spec.
-Name[en]=Display GPS position in 'VK Maps'
-Name[ru]=Показать GPS-позицию в сервисе 'VK Карты'
+Name[en]=Display GPS position in 'Waze'
+Name[ru]=Показать GPS-позицию в сервисе 'Waze'
 
 # Tool tip, locale supported (Appears in the status bar)
-Comment[en]=Display GPS position for '%f' in 'VK Maps' online mapping service
-Comment[ru]=Показать GPS-позицию для файла '%f' в онлайн-сервисе 'VK Карты'
+Comment[en]=Display GPS position for '%f' in 'Waze' online mapping service
+Comment[ru]=Показать GPS-позицию для файла '%f' в онлайн-сервисе 'Waze'
 
 # What to run.  Enclose in < > to run an executable that resides in the actions folder.
-Exec=<action_scripts/exif_metadata_mapping_vk.bash %F>
+Exec=<action_scripts/exif_metadata_mapping_waze.bash %F>
 
 # Icon name to use in the menu - must be a theme icon name
 Icon-Name=view-pin-symbolic
@@ -43,7 +43,7 @@ Mimetypes=image/jpeg;video/mp4;
 #Dependencies=exiftool;
 
 # Conditions - semicolon-separated array of special conditions
-Conditions=exec <action_scripts/exif_metadata_mapping_vk.bash %F --condition>;
+Conditions=exec <action_scripts/exif_metadata_mapping_waze.bash %F --condition>;
 
 # Run in terminal - set to true to execute the Exec line in a spawned terminal window.
 #Terminal=false

@@ -14,9 +14,9 @@
 #   - altitude               : shared 'altitude' variable
 obtain_gps_position_using_exif () {
   # obtain specific GPS-related metadata
-  local latitude=$(exif --machine-readable --ifd=GPS --tag GPSLatitude "$1")
+  local latitude=$(LC_NUMERIC=POSIX exif --machine-readable --ifd=GPS --tag GPSLatitude "$1")
   local latitude_ref=$(exif --machine-readable --ifd=GPS --tag GPSLatitudeRef "$1")
-  local longitude=$(exif --machine-readable --ifd=GPS --tag GPSLongitude "$1")
+  local longitude=$(LC_NUMERIC=POSIX exif --machine-readable --ifd=GPS --tag GPSLongitude "$1")
   local longitude_ref=$(exif --machine-readable --ifd=GPS --tag GPSLongitudeRef "$1")
   altitude=$(exif --machine-readable --ifd=GPS --tag GPSAltitude "$1")
 
@@ -24,8 +24,8 @@ obtain_gps_position_using_exif () {
   if [ -n "${latitude}" ] ; then
     local latitude_tokens=(${latitude//, / })
     local longitude_tokens=(${longitude//, / })
-    local latitude_degrees=$(echo "scale=6 ; ${latitude_tokens[0]} + ${latitude_tokens[1]} / 60 + ${latitude_tokens[2]//,/.} / 3600" | bc)
-    local longitude_degrees=$(echo "scale=6 ; ${longitude_tokens[0]} + ${longitude_tokens[1]} / 60 + ${longitude_tokens[2]//,/.} / 3600" | bc)
+    local latitude_degrees=$(echo "scale=6 ; ${latitude_tokens[0]} + ${latitude_tokens[1]} / 60 + ${latitude_tokens[2]} / 3600" | bc | sed 's/^\./0./')
+    local longitude_degrees=$(echo "scale=6 ; ${longitude_tokens[0]} + ${longitude_tokens[1]} / 60 + ${longitude_tokens[2]} / 3600" | bc | sed 's/^\./0./')
     gps_position="${latitude_degrees}${latitude_ref}, ${longitude_degrees}${longitude_ref}"
   else
     gps_position=''

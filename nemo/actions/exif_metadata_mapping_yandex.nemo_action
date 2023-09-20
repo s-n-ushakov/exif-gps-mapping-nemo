@@ -1,6 +1,6 @@
 [Nemo Action]
 #-----------------------------------------------------------------------------------------------------------------------
-# A Nemo action file to display GPS location from media file Exif metadata in 2GIS mapping service.
+# A Nemo action file to display GPS location from media file Exif metadata in Yandex Maps.
 #
 # See 'https://www.cipa.jp/std/documents/download_e.html?DC-008-Translation-2023-E' for Exif 3.0 metadata specification.
 #-----------------------------------------------------------------------------------------------------------------------
